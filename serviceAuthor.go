@@ -30,9 +30,13 @@ type AuthorService interface {
 
 var authors = []Author{
     Author{AuthorId: "1", Name: "Author 1", Nationality: "CR",
-        Birth: "1990-12-20", Genere: "Male"},
+        Birth: "1990-11-11", Genere: "Male"},
     Author{AuthorId: "2", Name: "Author 2", Nationality: "USA",
-        Birth: "1990-12-20", Genere: "Female"},
+        Birth: "1990-09-21", Genere: "Female"},
+    Author{AuthorId: "3", Name: "Author 3", Nationality: "China",
+        Birth: "1990-03-12", Genere: "Male"},
+    Author{AuthorId: "4", Name: "Author 4", Nationality: "CR",
+        Birth: "1990-05-23", Genere: "Female"},
 }
 
 func findAuthor(x string) int {

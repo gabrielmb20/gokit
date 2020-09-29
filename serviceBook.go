@@ -33,11 +33,17 @@ type BookService interface {
 
 var books = []Book{
     Book{BookId: "1", Title: "Operating System Concepts", Edition: "9th",
-        Copyright: "2012", Language: "ENGLISH", Pages: "976",
+        Copyright: "2012", Language: "Spanish", Pages: "976",
         AuthorId: "1", PublisherId: "1"},
-    Book{BookId: "2", Title: "Computer Networks", Edition: "5th",
-        Copyright: "2010", Language: "ENGLISH", Pages: "960",
+    Book{BookId: "2", Title: "Web Development", Edition: "8th",
+        Copyright: "2010", Language: "English", Pages: "453",
         AuthorId: "2", PublisherId: "2"},
+    Book{BookId: "3", Title: "Storage", Edition: "4th",
+        Copyright: "2010", Language: "French", Pages: "555",
+        AuthorId: "3", PublisherId: "3"},
+    Book{BookId: "4", Title: "Networks", Edition: "9th",
+        Copyright: "2010", Language: "Spanish", Pages: "245",
+        AuthorId: "4", PublisherId: "4"},
 }
 
 func find(x string) int {

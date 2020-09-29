@@ -30,9 +30,13 @@ type PublisherService interface {
 
 var publishers = []Publisher{
     Publisher{PublisherId: "1", Name: "Publisher 1", Country: "CR",
-        Founded: "1990-12-20", Genere: "Male"},
+        Founded: "1990-01-13", Genere: "Male"},
     Publisher{PublisherId: "2", Name: "Publisher 2", Country: "USA",
-        Founded: "1990-12-20", Genere: "Female"},
+        Founded: "1990-02-12", Genere: "Female"},
+    Publisher{PublisherId: "3", Name: "Publisher 3", Country: "China",
+        Founded: "1990-03-11", Genere: "Male"},
+    Publisher{PublisherId: "4", Name: "Publisher 4", Country: "CR",
+        Founded: "1990-04-10", Genere: "Female"},
 }
 
 func findPublisher(x string) int {
