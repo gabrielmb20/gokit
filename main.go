@@ -35,6 +35,18 @@ func main() {
         decodeGetBookByIdRequest,
         encodeResponse,
     )
+    // /books/{id}/authors
+    GetAuthorsByBookIdHandler := httptransport.NewServer(
+        makeGetBookAuthorsByIdEndpoint(bookSvc),
+        decodeGetBookAuthorsByIdRequest,
+        encodeResponse,
+    )
+    // /books/{id}/publishers
+    GetPublishersByBookIdHandler := httptransport.NewServer(
+        makeGetBookPublishersByIdEndpoint(bookSvc),
+        decodeGetBookPublishersByIdRequest,
+        encodeResponse,
+    )
     DeleteBookHandler := httptransport.NewServer(
         makeDeleteBookEndpoint(bookSvc),
         decodeDeleteBookRequest,
@@ -54,6 +66,12 @@ func main() {
     GetByAuthorIdHandler := httptransport.NewServer(
         makeGetAuthorByIdEndpoint(authorSvc),
         decodeGetAuthorByIdRequest,
+        encodeResponse,
+    )
+    // /author/{id}/books
+    GetBooksByAuthorIdHandler := httptransport.NewServer(
+        makeGetAuthorBooksByIdEndpoint(authorSvc),
+        decodeGetAuthorBooksByIdRequest,
         encodeResponse,
     )
     DeleteAuthorHandler := httptransport.NewServer(
@@ -77,6 +95,12 @@ func main() {
         decodeGetPublisherByIdRequest,
         encodeResponse,
     )
+    // /publisher/{id}/books
+    GetBooksByPublisherIdHandler := httptransport.NewServer(
+        makeGetPublisherBooksByIdEndpoint(publisherSvc),
+        decodeGetPublisherBooksByIdRequest,
+        encodeResponse,
+    )
     DeletePublisherHandler := httptransport.NewServer(
         makeDeletePublisherEndpoint(publisherSvc),
         decodeDeletePublisherRequest,
@@ -93,16 +117,20 @@ func main() {
     http.Handle("/book", CreateBookHandler)
     http.Handle("/book/update", UpdateBookHandler)
     r.Handle("/book/{bookid}", GetByBookIdHandler).Methods("GET")
+    r.Handle("/book/{bookid}/authors", GetAuthorsByBookIdHandler).Methods("GET")
+    r.Handle("/book/{bookid}/publishers", GetPublishersByBookIdHandler).Methods("GET")
     r.Handle("/book/{bookid}", DeleteBookHandler).Methods("DELETE")
     // AUTHOR
     http.Handle("/author", CreateAuthorHandler)
     http.Handle("/author/update", UpdateAuthorHandler)
     r.Handle("/author/{authorid}", GetByAuthorIdHandler).Methods("GET")
+    r.Handle("/author/{authorid}/books", GetBooksByAuthorIdHandler).Methods("GET")
     r.Handle("/author/{authorid}", DeleteAuthorHandler).Methods("DELETE")
     // PUBLISHER
     http.Handle("/publisher", CreatePublisherHandler)
     http.Handle("/publisher/update", UpdatePublisherHandler)
     r.Handle("/publisher/{publisherid}", GetByPublisherIdHandler).Methods("GET")
+    r.Handle("/publisher/{publisherid}/books", GetBooksByPublisherIdHandler).Methods("GET")
     r.Handle("/publisher/{publisherid}", DeletePublisherHandler).Methods("DELETE")
 
     // http.Handle("/metrics", promhttp.Handler())
